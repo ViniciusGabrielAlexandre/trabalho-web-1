@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 body{
 font-family: Arial;
 margin:0;
@@ -100,4 +101,88 @@ margin-top:20px;
 
 #telalogin input{
     width: 200px;
+=======
+body{
+font-family: Arial;
+margin:0;
+}
+
+header{
+background:#2c3e50;
+color:white;
+padding:10px;
+}
+
+.topo{
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+.logo{
+display:flex;
+align-items:center;
+gap:10px;
+}
+
+.menu{
+list-style:none;
+display:flex;
+gap:20px;
+padding:0;
+}
+
+.menu li{
+position:relative;
+}
+
+.menu a{
+color:white;
+text-decoration:none;
+}
+
+.submenu{
+display:none;
+position:absolute;
+background:#34495e;
+list-style:none;
+padding:10px;
+}
+
+.menu li:hover .submenu{
+display:block;
+}
+
+main{
+padding:20px;
+}
+
+form{
+display:flex;
+flex-direction:column;
+max-width:300px;
+}
+
+form input{
+margin-bottom:10px;
+padding:5px;
+}
+
+table{
+width:100%;
+border-collapse:collapse;
+margin-top:20px;
+}
+
+table, th, td{
+border:1px solid #ccc;
+padding:8px;
+}
+
+footer{
+text-align:center;
+padding:15px;
+background:#eee;
+margin-top:20px;
+>>>>>>> 5349a6ea2fe7b6fbde3a186dc366c637ea9563e4
 }
