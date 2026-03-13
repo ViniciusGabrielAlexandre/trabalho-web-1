@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Biblioteca Online</title>
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body>
+
+<header id="cabecalho">
+
+
+
+</header>
+
+
+<main>
+
+<section id="home">
+
+<h2>Bem-vindo à Biblioteca</h2>
+
+<p>
+Este sistema permite registrar e organizar livros de uma biblioteca
+de forma simples. Aqui você poderá cadastrar livros, visualizar
+informações e manter um controle da coleção.
+</p>
+
+</section>
+
+
+
+<section id="cadastrar">
+
+<h2>Cadastrar Livro</h2>
+
+<form>
+
+<label for="titulo">Título do Livro</label>
+<input type="text" id="titulo" name="titulo">
+
+<label for="autor">Autor</label>
+<input type="text" id="autor" name="autor">
+
+<label for="ano">Ano de Publicação</label>
+<input type="number" id="ano" name="ano">
+
+<label for="genero">Gênero</label>
+<input type="text" id="genero" name="genero">
+
+<button type="submit">Salvar Livro</button>
+
+</form>
+
+</section>
+
+
+
+<section id="listar">
+
+<h2>Lista de Livros</h2>
+
+<table>
+
+<thead>
+
+<tr>
+<th>ID</th>
+<th>Título</th>
+<th>Autor</th>
+<th>Ano</th>
+<th>Ações</th>
+</tr>
+
+</thead>
+
+<tbody>
+
+<tr>
+<td>1</td>
+<td>Dom Casmurro</td>
+<td>Machado de Assis</td>
+<td>1899</td>
+<td>Editar | Excluir</td>
+</tr>
+
+<tr>
+<td>2</td>
+<td>1984</td>
+<td>George Orwell</td>
+<td>1949</td>
+<td>Editar | Excluir</td>
+</tr>
+
+</tbody>
+
+</table>
+
+</section>
+
+
+
+<section id="sobre">
+
+<h2>Sobre a aplicação</h2>
+
+<p>
+Aplicação desenvolvida como prova de conceito utilizando
+HTML5 e CSS3 para demonstrar a construção de interfaces web.
+</p>
+
+</section>
+
+</main>
+
+
+
+<footer>
+
+<p>
+Equipe: Vinícius Alexandre | Vinicius Theiss 
+</p>
+
+</footer>
+
+<script>
+fetch('header.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('cabecalho').innerHTML = data;
+            });
+</script>
+
+</body>
+</html>
