@@ -54,7 +54,7 @@ Sistema para organizar livros de forma simples e prática.
 <label for="genero">Gênero *</label>
 <input type="text" id="genero" required>
 
-<button type="submit">Salvar</button>
+<button type="button" onclick="salvarDados()">Salvar</button>
 <button type="reset">Limpar</button>
 
 </form>
@@ -170,6 +170,23 @@ window.location.href = "#cadastrar";
 function excluir(index){
 livros.splice(index,1);
 renderTabela();
+}
+
+//salvar dados
+function salvarDados() {
+    var titulo = document.getElementById("titulo").value;
+    var autor = document.getElementById("autor").value;
+
+    localStorage.setItem("titulo", titulo);
+    localStorage.setItem("autor", autor);
+
+}
+
+function lerDados() {
+    document.getElementById("titulo").value = localStorage.getItem("titulo");
+    document.getElementById("autor").value = localStorage.getItem("autor");
+
+    console.log(localStorage.dados);
 }
 
 </script>
