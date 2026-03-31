@@ -99,7 +99,7 @@ padding-bottom:5px;
 }
 
 /* FORM */
-form{
+/*form{
 display:flex;
 flex-direction:column;
 max-width:300px;
@@ -228,7 +228,7 @@ margin-bottom:20px;
 border:none;
 }
 
-#telalogin input{
+#telalogin .inputlogin{
 width:100%;
 padding:10px;
 margin-bottom:15px;
