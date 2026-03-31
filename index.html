@@ -12,29 +12,18 @@
 
 </head>
 
-
 <body>
 
-<header id="cabecalho">
-
-
-
-</header>
-
+<header id="cabecalho"></header>
 
 <main>
 
 <section id="home">
-
 <h2>Bem-vindo à Biblioteca</h2>
-
 <p>
 Sistema para organizar livros de forma simples e prática.
 </p>
-
 </section>
-
-
 
 <section id="cadastrar">
 
@@ -53,8 +42,8 @@ Sistema para organizar livros de forma simples e prática.
 
 <label for="genero">Gênero *</label>
 <input type="text" id="genero" required>
- 
-<button type="submit">Salvar</button> <!--Sera mudado para o tipo button <button type="button" onclick="salvarDados()">Salvar</button>--> 
+
+<button type="submit">Salvar</button>
 <button type="reset">Limpar</button>
 
 </form>
@@ -101,14 +90,15 @@ fetch('header.html')
 .then(r => r.text())
 .then(data => document.getElementById('cabecalho').innerHTML = data);
 
-// CRUD
-let livros = [];
+// CRUD + PERSISTÊNCIA JSON
+let livros = JSON.parse(localStorage.getItem("livros")) || [];
 let editando = null;
 
 const form = document.getElementById("formLivro");
 const tabela = document.getElementById("tabelaLivros");
 const erro = document.getElementById("mensagemErro");
 
+// SUBMIT (corrigido)
 form.addEventListener("submit", function(e){
 e.preventDefault();
 
@@ -131,10 +121,24 @@ editando = null;
 livros.push({titulo, autor, ano, genero});
 }
 
+// SALVAR JSON
+salvarDados();
+
 form.reset();
 renderTabela();
 });
 
+// FUNÇÃO DE SALVAR (JSON)
+function salvarDados(){
+localStorage.setItem("livros", JSON.stringify(livros));
+}
+
+// FUNÇÃO DE CARREGAR
+function carregarDados(){
+livros = JSON.parse(localStorage.getItem("livros")) || [];
+}
+
+// RENDERIZAÇÃO
 function renderTabela(){
 tabela.innerHTML = "";
 
@@ -155,6 +159,7 @@ tabela.innerHTML += linha;
 });
 }
 
+// EDITAR
 function editar(index){
 let livro = livros[index];
 
@@ -167,27 +172,16 @@ editando = index;
 window.location.href = "#cadastrar";
 }
 
+// EXCLUIR
 function excluir(index){
 livros.splice(index,1);
+salvarDados();
 renderTabela();
 }
 
-//salvar dados
-function salvarDados() { // ainda deve ser mudado para salvar os dados em Jason para que os dados permaneçam
-    var titulo = document.getElementById("titulo").value;
-    var autor = document.getElementById("autor").value;
-
-    localStorage.setItem("titulo", titulo);
-    localStorage.setItem("autor", autor);
-
-}
-
-function lerDados() { //vai ser mudado era só pra teste isso aq
-    document.getElementById("titulo").value = localStorage.getItem("titulo");
-    document.getElementById("autor").value = localStorage.getItem("autor");
-
-    console.log(localStorage.dados);
-}
+// CARREGAR AO INICIAR
+carregarDados();
+renderTabela();
 
 </script>
 
