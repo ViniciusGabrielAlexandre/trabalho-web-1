@@ -88,7 +88,19 @@ Sistema para organizar livros de forma simples e prática.
 // HEADER
 fetch('header.html')
 .then(r => r.text())
-.then(data => document.getElementById('cabecalho').innerHTML = data);
+.then(data => {
+    document.getElementById('cabecalho').innerHTML = data;
+
+    // só roda DEPOIS que o header foi inserido
+    const usuario = sessionStorage.getItem("usuario");
+
+    if(usuario){
+        const spanUsuario = document.querySelector(".usuario span");
+        if(spanUsuario){
+            spanUsuario.innerText = "Usuário: " + usuario;
+        }
+    }
+});
 
 // CRUD + PERSISTÊNCIA JSON
 let livros = JSON.parse(localStorage.getItem("livros")) || [];

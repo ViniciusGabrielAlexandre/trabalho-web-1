@@ -14,13 +14,57 @@
 <label for="senha">Senha</label>
 <input type="text" id="senha" name="senha" class="inputlogin">
 
+<button type="button" id="esquecisenha" class="inputlogin">   Esqueci minha senha </button>
+
 <input type="checkbox" id="lembreme" name="lembreme">
 <label for="lembreme">Lembre-me</label>
 
 <a href="index.html">
-<button type="button">Criar Conta</button>
+<button type="button" id="btnLogin">Entrar</button>
 </a>
 
 </form>
 
 </section>
+
+<script>
+    
+const botaoLogin = document.getElementById("btnLogin");
+
+botaoLogin.addEventListener("click", function(){
+
+    const nome = document.getElementById("nome").value;
+    const senha = document.getElementById("senha").value;
+    const lembreme = document.getElementById("lembreme").checked;
+
+    // salva usuário na sessão
+    sessionStorage.setItem("usuario", nome);
+
+    // salva "lembrar-me" no localStorage
+    localStorage.setItem("lembreme", lembreme);
+
+    // se estiver marcado, salva a senha
+    if(lembreme){
+        localStorage.setItem("senha", senha);
+    } else {
+        localStorage.removeItem("senha");
+    }
+
+    // redireciona
+    window.location.href = "index.html";
+});
+
+window.addEventListener("load", function(){
+
+    const lembreme = localStorage.getItem("lembreme") === "true";
+    const senha = localStorage.getItem("senha");
+
+    document.getElementById("lembreme").checked = lembreme;
+
+    if(lembreme && senha){
+        document.getElementById("senha").value = senha;
+    }
+});
+
+
+</script>
