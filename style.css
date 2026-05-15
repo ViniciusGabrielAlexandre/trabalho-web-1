@@ -266,7 +266,22 @@ align-items:center;
 gap:5px;
 margin-bottom:10px;
 }
+<<<<<<< HEAD
 
+=======
+/* Ordenação */
+.titulo-header {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+}
+
+.titulo-header img {
+  width: 15px;
+  height: 15px;
+}
+>>>>>>> a55711d (Ordenação Tabela)
 /* RESPONSIVO */
 @media (max-width:768px){
 
