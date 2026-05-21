@@ -1,22 +1,41 @@
 
+:root{
+--fundo:#0b0e12;
+--surface:#11161d;
+--surface-container:#161b22;
+--surface-container-igh:#1f2530;
+--outline:#343b48;
+--primary:#8fb3ff;
+--primary-container:#2e51a2;
+--on-surface:#e4e6eb;
+--on-surface-variant:#c5cad3;
+--active-pill:#3d4658;
+--danger:#d85f5f;
+}
+
+*{
+box-sizing:border-box;
+}
+
 body{
-font-family: Arial, Helvetica, sans-serif;
 margin:0;
-background:#0b0e12;
-color:#e4e6eb;
+background:var(--fundo);
+color:var(--on-surface);
 }
 
 /* HEADER */
 #cabecalho{
-background:#11161d;
-border-bottom:2px solid #2e51a2;
-padding:10px;
+background:var(--surface);
+border-bottom:1px solid var(--outline);
+padding:10px 24px 14px;
 }
 
 .topo{
 display:flex;
 justify-content:space-between;
 align-items:center;
+min-height:56px;
+gap:16px;
 }
 
 .logo{
@@ -25,58 +44,118 @@ align-items:center;
 gap:10px;
 }
 
+.logo img{
+width:48px;
+height:48px;
+object-fit:contain;
+}
+
 .logo h1{
-font-size:20px;
-color:#ffffff;
+font-size:22px;
+line-height:1.2;
+color:var(--on-surface);
+margin:0;
+font-weight:700;
 }
 
 .usuario{
 display:flex;
 align-items:center;
-gap:10px;
+gap:8px;
 font-size:14px;
-color:#ccc;
+color:var(--on-surface-variant);
+background:var(--surface-container);
+border:1px solid var(--outline);
+padding:6px 12px;
+border-radius:999px;
+}
+
+.usuario img{
+width:32px;
+height:32px;
+border-radius:50%;
+object-fit:cover;
 }
 
 /* MENU */
+nav{
+display:flex;
+justify-content:center;
+margin-top:8px;
+width:100%;
+}
+
 .menu{
 list-style:none;
 display:flex;
-gap:20px;
-padding:10px;
+gap:4px;
+padding:6px;
 margin:0;
-background:#2e51a2;
+background:var(--primary-container);
+border-radius:999px;
+width:100%;
+max-width:100%;
+border:1px solid rgba(143,179,255,0.45);
+box-shadow:0 4px 14px rgba(46,81,162,0.35);
 }
 
-.menu li{
+.menu > li{
 position:relative;
+flex:1;
 }
 
 .menu a{
-color:white;
+color:#eef4ff;
 text-decoration:none;
-font-weight:bold;
+font-weight:500;
 font-size:14px;
+line-height:20px;
+display:flex;
+align-items:center;
+justify-content:center;
+gap:8px;
+min-height:40px;
+padding:10px 18px;
+border-radius:999px;
+transition:0.2s;
+width:100%;
 }
 
 .menu a:hover{
-text-decoration:underline;
+background:rgba(255,255,255,0.14);
+color:#ffffff;
+text-decoration:none;
 }
+
+.menu a.ativo{
+background:rgba(255,255,255,0.22);
+color:#ffffff;
+box-shadow:inset 0 0 0 1px rgba(255,255,255,0.16);
+}
+
 
 /* SUBMENU */
 .submenu{
 display:none;
 position:absolute;
-background:#1c2530;
+background:var(--surface-container-high);
 list-style:none;
-padding:10px;
-top:100%;
+padding:8px;
+top:calc(100% + 8px);
 left:0;
-min-width:150px;
+min-width:190px;
+border-radius:12px;
+z-index:2;
+border:1px solid var(--outline);
+box-shadow:0 8px 24px rgba(0,0,0,0.35);
 }
 
 .submenu li{
-margin-bottom:5px;
+margin-bottom:2px;
+}
+
+.submenu li:last-child{
+margin-bottom:0;
 }
 
 .menu li:hover .submenu{
@@ -85,7 +164,9 @@ display:block;
 
 /* MAIN */
 main{
-padding:20px;
+padding:24px;
+max-width:1100px;
+margin:0 auto;
 }
 
 /* SECTIONS */
@@ -94,104 +175,185 @@ margin-bottom:40px;
 }
 
 h2{
-border-bottom:2px solid #2e51a2;
-padding-bottom:5px;
+border-bottom:1px solid var(--outline);
+padding-bottom:10px;
+font-size:24px;
+line-height:32px;
+font-weight:500;
+color:var(--on-surface);
 }
 
-FORM 
+/* FORM */
 form{
 display:flex;
 flex-direction:column;
-max-width:300px;
-background:#161b22;
-padding:20px;
-border-radius:8px;
+max-width:420px;
+background:var(--surface-container);
+padding:24px;
+border-radius:16px;
+border:1px solid var(--outline);
+box-shadow:0 2px 8px rgba(0,0,0,0.25);
+gap:6px;
+}
+
+form label{
+font-size:13px;
+font-weight:500;
+color:var(--on-surface-variant);
+margin-top:6px;
 }
 
 form input{
 margin-bottom:10px;
-padding:8px;
-border:none;
-border-radius:4px;
-background:#0d1117;
-color:white;
+padding:12px 14px;
+border:1px solid var(--outline);
+border-radius:12px;
+background:var(--surface);
+color:var(--on-surface);
+font-size:14px;
+outline:none;
+transition:0.2s;
+}
+
+form input:focus{
+border-color:var(--primary);
+box-shadow:0 0 0 2px rgba(143,179,255,0.18);
 }
 
 form button{
-padding:10px;
-margin-top:5px;
+padding:10px 20px;
+margin-top:8px;
 border:none;
-border-radius:4px;
+border-radius:999px;
 cursor:pointer;
-font-weight:bold;
+font-weight:700;
+font-size:14px;
+min-height:40px;
+transition:0.2s;
 }
 
 form button[type="submit"]{
-background:#2e51a2;
+background:var(--primary-container);
 color:white;
 }
 
 form button[type="reset"]{
-background:#444;
-color:white;
+background:transparent;
+color:var(--primary);
+border:1px solid var(--outline);
+}
+
+form button:hover{
+filter:brightness(1.12);
+}
+
+#formLivro{
+display:grid;
+grid-template-columns:160px 1fr;
+align-items:center;
+column-gap:18px;
+row-gap:12px;
+width:100%;
+max-width:none;
+}
+
+#formLivro label{
+margin-top:0;
+}
+
+#formLivro input{
+margin-bottom:0;
+}
+
+#formLivro button[type="submit"]{
+grid-column:1;
+justify-self:end;
+width:150px;
+}
+
+#formLivro button[type="reset"]{
+grid-column:2;
+justify-self:start;
+width:150px;
 }
 
 /* TABELA */
 table{
 width:100%;
-border-collapse:collapse;
+border-collapse:separate;
+border-spacing:0;
 margin-top:20px;
-background:#11161d;
+background:var(--surface-container);
+border:1px solid var(--outline);
+border-radius:16px;
+overflow:hidden;
+box-shadow:0 2px 8px rgba(0,0,0,0.25);
 }
 
 thead{
-background:#1c2530;
+background:var(--surface-container-high);
 }
 
 th{
 text-align:left;
-padding:10px;
-color:#bbb;
+padding:14px 16px;
+color:var(--on-surface-variant);
 font-size:14px;
+font-weight:700;
+border-bottom:1px solid var(--outline);
 }
 
 td{
-padding:12px;
-border-bottom:1px solid #222;
+padding:14px 16px;
+border-bottom:1px solid var(--outline);
+color:var(--on-surface);
+font-size:14px;
+vertical-align:middle;
+}
+
+tbody tr:last-child td{
+border-bottom:none;
 }
 
 /* LINHAS */
 tbody tr{
-transition:0.2s;
+transition:background 0.2s;
 }
 
 tbody tr:hover{
-background:#1c2530;
+background:var(--surface-container-high);
 }
 
 /* BOTÕES DA TABELA */
 td button{
 margin-right:5px;
-padding:5px 10px;
+padding:8px 14px;
 border:none;
-border-radius:4px;
+border-radius:999px;
 cursor:pointer;
 font-size:12px;
+font-weight:700;
+transition:0.2s;
 }
 
 td button:first-child{
-background:#2e51a2;
+background:var(--primary-container);
 color:white;
 }
 
 td button:last-child{
-background:#a22e2e;
-color:white;
+background:transparent;
+color:var(--danger);
+border:1px solid rgba(216,95,95,0.55);
+}
+
+td button:hover{
+filter:brightness(1.12);
 }
 
 /* ERRO */
 #mensagemErro{
-color:#ff4d4d;
+color:#ffb4ab;
 margin-top:10px;
 }
 
@@ -199,9 +361,9 @@ margin-top:10px;
 footer{
 text-align:center;
 padding:15px;
-background:#11161d;
-border-top:1px solid #2e51a2;
-color:#aaa;
+background:var(--surface);
+border-top:1px solid var(--outline);
+color:var(--on-surface-variant);
 }
 
 /* ================= LOGIN ================= */
@@ -212,15 +374,15 @@ flex-direction:column;
 align-items:center;
 justify-content:center;
 height:100vh;
-background:#0b0e12;
+background:var(--fundo);
 }
 
 #telalogin form{
-background:#161b22;
+background:var(--surface-container);
 padding:30px;
-border-radius:10px;
+border-radius:16px;
 width:300px;
-box-shadow:0 0 10px rgba(0,0,0,0.5);
+box-shadow:0 2px 8px rgba(0,0,0,0.25);
 }
 
 #telalogin h2{
@@ -232,25 +394,25 @@ border:none;
 width:100%;
 padding:10px;
 margin-bottom:15px;
-background:#0d1117;
-border:none;
-border-radius:5px;
-color:white;
+background:var(--surface);
+border:1px solid var(--outline);
+border-radius:12px;
+color:var(--on-surface);
 }
 
 #telalogin button{
 width:100%;
 padding:10px;
 margin-top:5px;
-background:#2e51a2;
+background:var(--primary-container);
 color:white;
 border:none;
-border-radius:5px;
+border-radius:999px;
 cursor:pointer;
 }
 
 #telalogin a{
-color:#58a6ff;
+color:var(--primary);
 font-size:12px;
 text-decoration:none;
 }
@@ -266,9 +428,6 @@ align-items:center;
 gap:5px;
 margin-bottom:10px;
 }
-<<<<<<< HEAD
-
-=======
 /* Ordenação */
 .titulo-header {
   display: flex;
@@ -281,12 +440,21 @@ margin-bottom:10px;
   width: 15px;
   height: 15px;
 }
->>>>>>> a55711d (Ordenação Tabela)
 /* RESPONSIVO */
 @media (max-width:768px){
 
 .menu{
 flex-direction:column;
+width:100%;
+border-radius:24px;
+}
+
+nav{
+width:100%;
+}
+
+.menu a{
+width:100%;
 }
 
 .topo{
@@ -296,6 +464,17 @@ align-items:flex-start;
 
 table{
 font-size:12px;
+}
+
+#formLivro{
+grid-template-columns:1fr;
+}
+
+#formLivro button[type="submit"],
+#formLivro button[type="reset"]{
+grid-column:auto;
+justify-self:stretch;
+width:100%;
 }
 
 #telalogin form{
