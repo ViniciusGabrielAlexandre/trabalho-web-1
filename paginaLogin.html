@@ -1,38 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-br">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Biblioteca Online</title>
     <link rel="stylesheet" href="style.css">
 </head>
+<body class="body-login"> <section id="telalogin">
 
-<section id="telalogin">
+    <h2>Faça seu Login</h2>
 
-<h2>Faça seu Login</h2>
+    <form id="formLivro"> <div class="textfield">
+            <input type="text" id="nome" name="nome_usuario" required placeholder=" ">
+            <label for="nome">Nome de Usuário</label>
+        </div>
 
-<form>
+        <div class="textfield">
+            <input type="password" id="senha" name="senha" required placeholder=" ">
+            <label for="senha">Senha</label>
+        </div>
 
-<label for="titulo">Nome de Usuario</label>
-<input type="text" id="nome" name="nome usuario" class="inputlogin">
+        <div class="opcoes-login">
+            <div class="lembreme-container">
+                <input type="checkbox" id="lembreme" name="lembreme">
+                <label for="lembreme">Lembre-me</label>
+            </div>
+            <button type="button" id="esquecisenha" class="botao-limpar-estilo">Esqueci minha senha</button>
+        </div>
 
-<label for="senha">Senha</label>
-<input type="text" id="senha" name="senha" class="inputlogin">
+        <div class="botoes-login">
+            <button type="button" id="btnLogin">Entrar</button>
+        </div>
 
-<button type="button" id="esquecisenha" class="inputlogin">   Esqueci minha senha </button>
-
-<input type="checkbox" id="lembreme" name="lembreme">
-<label for="lembreme">Lembre-me</label>
-
-<a href="index.html">
-<button type="button" id="btnLogin">Entrar</button>
-</a>
-
-</form>
+    </form>
 
 </section>
 
 <script>
-    
 const botaoLogin = document.getElementById("btnLogin");
 
 botaoLogin.addEventListener("click", function(){
-
     const nome = document.getElementById("nome").value;
     const senha = document.getElementById("senha").value;
     const lembreme = document.getElementById("lembreme").checked;
@@ -55,7 +62,6 @@ botaoLogin.addEventListener("click", function(){
 });
 
 window.addEventListener("load", function(){
-
     const lembreme = localStorage.getItem("lembreme") === "true";
     const senha = localStorage.getItem("senha");
 
@@ -65,6 +71,6 @@ window.addEventListener("load", function(){
         document.getElementById("senha").value = senha;
     }
 });
-
-
 </script>
+</body>
+</html>

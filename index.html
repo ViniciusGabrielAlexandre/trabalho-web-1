@@ -160,14 +160,24 @@ Limpar
 
 <h2>Lista de Livros</h2>
 
+<div class="tabela-container">
 <table>
 
 <thead>
 
+<!--Poliana Checkbox-->
 <tr>
+<th class="coluna-id">
+<input type="checkbox"> ID
+</th>
 
-<th>ID</th>
-<th>Título</th>
+<th onclick="trocarSeta()">
+<div class="titulo-header">
+Título
+<img id="seta" src="cima.png" width="15">
+</div>
+</th>
+
 <th>Autor</th>
 <th>Ano</th>
 <th>Status</th>
@@ -180,6 +190,25 @@ Limpar
 <tbody id="tabelaLivros"></tbody>
 
 </table>
+
+<!--Parte da Poliana: paginação-->
+<div class="paginacao">
+  <span>Páginas</span>
+
+  <select>
+    <option>10</option>
+    <option>25</option>
+    <option>75</option>
+  </select>
+
+  <span>1-10 de 100</span>
+
+  <button> <img id="flecha" src= "voltar.png" alt="Voltar"> </button>
+  <button><img id="flecha" src= "voltarflecha.png" alt="voltar flecha"> </button>
+  <button><img id="flecha" src= "avancarflecha.png" alt="avancar flecha"> </button>
+  <button><img id="imagen" src= "avancar.png" alt="Avançar"> </button>
+</div>
+</div>
 
 </section>
 
@@ -338,35 +367,46 @@ tabela.innerHTML = "";
 
 livros.forEach((livro, index)=>{
 
+//Parte da poliana setaTitulo
+let setaPraCima = true;
+
+function trocarSeta() {
+  const seta = document.getElementById("seta");
+
+  if (setaPraCima) {
+    seta.src = "cima.png";
+  } else {
+    seta.src = "baixo.png";
+  }
+
+  setaPraCima = !setaPraCima;
+}
+
+//Parte da poliana checkbox
 let linha = `
 
 <tr>
 
-<td>${index+1}</td>
+<td class="coluna-id">
+<input type="checkbox" class="checkbox-livro">
+${index+1}
+</td>
+
 
 <td>${livro.titulo}</td>
-
 <td>${livro.autor}</td>
-
 <td>${livro.ano}</td>
-
-<td>${livro.status}</td>
+<td>${livro.status || "Lido"}</td>
 
 <td>
-
-<button onclick="editar(${index})">
-Editar
-</button>
-
-<button onclick="excluir(${index})">
-Excluir
-</button>
-
+<button onclick="editar(${index})">Editar</button>
+<button onclick="excluir(${index})">Excluir</button>
 </td>
 
 </tr>
-
 `;
+
+
 
 tabela.innerHTML += linha;
 
