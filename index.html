@@ -34,8 +34,6 @@ Sistema para organizar livros de forma simples e prática.
 
 <form id="formLivro">
 
-<!-- TÍTULO -->
-
 <div class="textfield">
 
 <input
@@ -50,8 +48,6 @@ Título
 </label>
 
 </div>
-
-<!-- AUTOR -->
 
 <div class="textfield">
 
@@ -68,8 +64,6 @@ Autor
 
 </div>
 
-<!-- ANO -->
-
 <div class="textfield">
 
 <input
@@ -85,8 +79,6 @@ Ano
 
 </div>
 
-<!-- GÊNERO -->
-
 <div class="textfield">
 
 <input
@@ -101,8 +93,6 @@ Gênero
 </label>
 
 </div>
-
-<!-- STATUS -->
 
 <div class="status-container">
 
@@ -161,53 +151,51 @@ Limpar
 <h2>Lista de Livros</h2>
 
 <div class="tabela-container">
-<table>
+  <table>
 
-<thead>
+  <thead>
 
-<!--Poliana Checkbox-->
-<tr>
-<th class="coluna-id">
-<input type="checkbox"> ID
-</th>
+  <tr>
+  <th class="coluna-id">
+  <input type="checkbox"> ID
+  </th>
 
-<th onclick="trocarSeta()">
-<div class="titulo-header">
-Título
-<img id="seta" src="cima.png" width="15">
-</div>
-</th>
+  <th onclick="trocarSeta()">
+  <div class="titulo-header">
+  Título
+  <img id="seta" src="cima.png" width="15">
+  </div>
+  </th>
 
-<th>Autor</th>
-<th>Ano</th>
-<th>Status</th>
-<th>Ações</th>
+  <th>Autor</th>
+  <th>Ano</th>
+  <th>Status</th>
+  <th>Ações</th>
 
-</tr>
+  </tr>
 
-</thead>
+  </thead>
 
-<tbody id="tabelaLivros"></tbody>
+  <tbody id="tabelaLivros"></tbody>
 
-</table>
+  </table>
 
-<!--Parte da Poliana: paginação-->
-<div class="paginacao">
-  <span>Páginas</span>
+  <div class="paginacao">
+    <span>Páginas</span>
 
-  <select>
-    <option>10</option>
-    <option>25</option>
-    <option>75</option>
-  </select>
+    <select>
+      <option>10</option>
+      <option>25</option>
+      <option>75</option>
+    </select>
 
-  <span>1-10 de 100</span>
+    <span>1-10 de 100</span>
 
-  <button> <img id="flecha" src= "voltar.png" alt="Voltar"> </button>
-  <button><img id="flecha" src= "voltarflecha.png" alt="voltar flecha"> </button>
-  <button><img id="flecha" src= "avancarflecha.png" alt="avancar flecha"> </button>
-  <button><img id="imagen" src= "avancar.png" alt="Avançar"> </button>
-</div>
+    <button> <img id="flecha" src= "voltar.png" alt="Voltar"> </button>
+    <button><img id="flecha" src= "voltarflecha.png" alt="voltar flecha"> </button>
+    <button><img id="flecha" src= "avancarflecha.png" alt="avancar flecha"> </button>
+    <button><img id="imagen" src= "avancar.png" alt="Avançar"> </button>
+  </div>
 </div>
 
 </section>
