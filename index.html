@@ -160,14 +160,19 @@ Limpar
   <input type="checkbox"> ID
   </th>
 
-  <th onclick="trocarSeta()">
+  <th onclick="ordenarLivros('titulo', 'setaTitulo')">
   <div class="titulo-header">
   Título
-  <img id="seta" src="cima.png" width="15">
+  <img id="setaTitulo" src="cima.png" width="15">
   </div>
   </th>
 
-  <th>Autor</th>
+  <th onclick="ordenarLivros('autor', 'setaAutor')">
+  <div class="titulo-header">
+  Autor
+  <img id="setaAutor" src="cima.png" width="15">
+  </div>
+  </th>
   <th>Ano</th>
   <th>Status</th>
   <th>Ações</th>
@@ -253,6 +258,9 @@ spanUsuario.innerText = "Usuário: " + usuario;
 let livros = JSON.parse(localStorage.getItem("livros")) || [];
 
 let editando = null;
+
+// Esta variável guarda qual será a próxima ordem usada na tabela: true significa crescente e false significa decrescente.
+let ordemCrescente = true;
 
 const form = document.getElementById("formLivro");
 
@@ -349,26 +357,32 @@ localStorage.getItem("livros")
 
 // RENDER
 
+function ordenarLivros(campo, idSeta){
+livros.sort((livroA, livroB)=>{
+let textoA = livroA[campo] || "";
+let textoB = livroB[campo] || "";
+if(ordemCrescente){
+
+return textoA.localeCompare(textoB);
+
+}
+
+return textoB.localeCompare(textoA);
+
+});
+
+let seta = document.getElementById(idSeta);
+seta.src = ordemCrescente ? "cima.png" : "baixo.png";
+ordemCrescente = !ordemCrescente;
+renderTabela();
+
+}
+
 function renderTabela(){
 
 tabela.innerHTML = "";
 
 livros.forEach((livro, index)=>{
-
-//Parte da poliana setaTitulo
-let setaPraCima = true;
-
-function trocarSeta() {
-  const seta = document.getElementById("seta");
-
-  if (setaPraCima) {
-    seta.src = "cima.png";
-  } else {
-    seta.src = "baixo.png";
-  }
-
-  setaPraCima = !setaPraCima;
-}
 
 //Parte da poliana checkbox
 let linha = `
